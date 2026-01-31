@@ -4,11 +4,28 @@
 
 {% block content %}
   <h1>Home</h1>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul class="flashes">
+        <!-- Creates an unordered list for all messages.
+        Loops over each tuple (category, message) in messages. -->
+        {% for category, message in messages %}
+          <!-- class="{{ category }}" assigns the category as a CSS class.
+          Example: class="error" or class="success"
+          Lets you style messages differently in CSS (.error { color:red; })
+          {{ message }} prints the text of the message. -->
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
   
-  <form method="post">
+  <form method="post" action="{{ url_for('main.home') }}">
     <input type="text" name="name" placeholder="Your name">
     <button type="submit">Submit</button>
   </form>
+
 
     {% if name %}
         <h2>Hello, {{ name }}! 👋</h2>
