@@ -27,7 +27,13 @@
   </form>
 
 
-    {% if name %}
-        <h2>Hello, {{ name }}! 👋</h2>
-    {% endif %}
+  {% if names %}
+      <h2>Submitted Names:</h2>
+      <ul>
+        {% for n in names %}
+          <li class="submitted_names">{{ n.name }}</li>
+        {% endfor %}
+      </ul>
+  {% endif %}
+
 {% endblock %}

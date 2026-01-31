@@ -1,5 +1,7 @@
 body {
     font-family: Arial, sans-serif;
+    color: white;
+    background: black;
     max-width: 800px;
     margin: 40px auto;
     padding: 0 20px;
@@ -12,7 +14,7 @@ body {
 nav a {
     margin-right: 10px;
     text-decoration: none;
-    color: #333;
+    color: turquoise;
 }
 
 nav a:hover {
@@ -20,7 +22,7 @@ nav a:hover {
 }
 
 h1 {
-    color: #2c3e50;
+    color: white;
 }
 
 form {
@@ -62,6 +64,10 @@ ul li a {
 ul li a:hover {
     text-decoration: underline;
 } 
+
+.submitted_names {
+    color: maroon;
+}
 
 .error {
     color: red;
