@@ -1,1 +1,15 @@
+# Python / venv
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Flask secrets / environment
 *.env
+*.key
+instance/
+.envrc
+
+# Mac / IDE stuff
+.DS_Store
+.vscode/
