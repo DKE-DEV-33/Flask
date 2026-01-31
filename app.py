@@ -1,17 +1,12 @@
-from flask import Flask, render_template, request
+from flask import Flask
+from routes.main import main
 
 app = Flask(__name__)
+app.register_blueprint(main)
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
-    name = ""
-    if request.method == 'POST':
-        name = request.form.get('name')
-    return render_template('index.html', name=name)
-    
 if __name__ == '__main__':
     app.run(debug=True)
 
 
 # To run app.py, ensure you have an 'index.html' file in a 'templates' and 
-# run command: python3 app.py
+# run command: python3 app.py for now.

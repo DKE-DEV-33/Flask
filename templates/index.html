@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Demo Flask App</title>
-    </head>
-    <body>
-        <h1>Hello</h1>
+{% extends "base.html" %}
 
-        <form method="post">
-            <input type="text" name="name" placeholder="Your Name">
-            <button type="submit">Submit</button>
-        </form>
+{% block title %}Home{% endblock %}
 
-        {% if name %}
-            <h2>Hello, {{ name }}! 👋</h2>
-        {% endif %}
-    </body>
-</html>
+{% block content %}
+  <h1>Home</h1>
+  
+  <form method="post">
+    <input type="text" name="name" placeholder="Your name">
+    <button type="submit">Submit</button>
+  </form>
+
+    {% if name %}
+        <h2>Hello, {{ name }}! 👋</h2>
+    {% endif %}
+{% endblock %}
