@@ -30,10 +30,15 @@
   {% if names %}
       <h2>Submitted Names:</h2>
       <ul>
-        {% for n in names %}
-          <li class="submitted_names">{{ n.name }}</li>
-        {% endfor %}
+      {% for n in names %}
+          <li class="submitted_names">
+              {{ n.name }}
+              <a href="{{ url_for('main.edit_name', name_id=n.id) }}">Edit</a>
+              <a href="{{ url_for('main.delete_name', name_id=n.id) }}">Delete</a>
+          </li>
+      {% endfor %}
       </ul>
+
   {% endif %}
 
 {% endblock %}

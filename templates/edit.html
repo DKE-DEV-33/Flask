@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Name{% endblock %}
+
+{% block content %}
+
+<h1>Edit Name</h1>
+<form method="post">
+    <input type="text" name="name" value="{{ name_entry.name }}">
+    <button type="submit">Save</button>
+    <a href="{{ url_for('main.home') }}">Cancel</a>
+</form>
+
+{% endblock %}

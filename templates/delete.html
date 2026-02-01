@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Name{% endblock %}
+
+{% block content %}
+<h1>Confirm Delete</h1>
+
+<p>
+    Are you sure you want to delete <strong>{{ name_entry.name }}</strong>?
+</p>
+
+<form method="post" action="{{ url_for('main.delete_name', name_id=name_entry.id) }}">
+    <button type="submit">Yes, delete</button>
+    <a href="{{ url_for('main.home') }}">Cancel</a>
+</form>
+{% endblock %}

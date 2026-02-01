@@ -38,3 +38,36 @@ def home():
 @main.route('/about', methods=['GET'])
 def about():
     return render_template('about.html')
+
+# Delete route 
+@main.route('/delete/<int:name_id>', methods=['GET', 'POST'])
+def delete_name(name_id):
+    name_entry = Name.query.get_or_404(name_id)
+
+    if request.method == 'POST':
+        db.session.delete(name_entry)
+        db.session.commit()
+        flash(' Name deleted successfully.', 'success')
+        return redirect(url_for('main.home'))
+    
+    return render_template('delete.html', name_entry=name_entry)
+
+# edit route
+@main.route('/edit/<int:name_id>', methods=['GET', 'POST'])
+def edit_name(name_id):
+    name_entry = Name.query.get_or_404(name_id)
+
+    if request.method == 'POST':
+        new_name = request.form.get('name', '').strip()
+
+        # Basic validation
+        if not new_name:
+            flash('Name cannot be empty!', 'error')
+            return redirect(url_for('main.edit_name', name_id=name_id))
+
+        name_entry.name = new_name
+        db.session.commit()
+        flash(f'Updated name to {new_name}', 'success')
+        return redirect(url_for('main.home'))
+
+    return render_template('edit.html', name_entry=name_entry)
