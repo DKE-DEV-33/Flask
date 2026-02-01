@@ -5,6 +5,7 @@ __pycache__/
 *.pyc
 
 # Flask secrets / environment
+.flaskenv
 *.env
 *.key
 instance/

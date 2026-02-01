@@ -1,16 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from extensions import db
+from routes.models import Name
 
 # Blueprint setup
 main = Blueprint('main', __name__)
-
-# Model for storing submitted names
-class Name(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
-    
-    def __repr__(self):
-        return f'<Name {self.name}>'
 
 # Home route handling both GET and POST requests
 @main.route('/', methods=['GET', 'POST'])
@@ -56,7 +49,8 @@ def delete_name(name_id):
 @main.route('/edit/<int:name_id>', methods=['GET', 'POST'])
 def edit_name(name_id):
     name_entry = Name.query.get_or_404(name_id)
-
+    # For the flash message to show the old name vs the new name
+    old_name = name_entry.name
     if request.method == 'POST':
         new_name = request.form.get('name', '').strip()
 
@@ -67,7 +61,7 @@ def edit_name(name_id):
 
         name_entry.name = new_name
         db.session.commit()
-        flash(f'Updated name to {new_name}', 'success')
+        flash(f'Updated {old_name} to {new_name}', 'success')
         return redirect(url_for('main.home'))
 
     return render_template('edit.html', name_entry=name_entry)

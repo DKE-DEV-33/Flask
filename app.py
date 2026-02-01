@@ -22,8 +22,10 @@ db.init_app(app)
 app.register_blueprint(main)
 
 if __name__ == '__main__':
-    app.run(debug=True, host="127.0.0.1", port=5000)
-
+    app.run(
+        debug=os.getenv('FLASK_ENV') == 'development',
+        port=5000
+    )
 
 
 # Make sure venv (environment) is active: 
