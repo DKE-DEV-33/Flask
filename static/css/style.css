@@ -80,3 +80,28 @@ ul li a:hover {
 .info {
     color: blue;
 }
+
+.btn {
+  padding: 6px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.primary { background: #2563eb; color: white; }
+.btn.danger { background: #dc2626; color: white; }
+.btn.small { font-size: 0.8rem; }
+
+.actions {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #666;
+}
+.timestamp:hover {
+  color: #333;
+}

@@ -10,7 +10,7 @@
 </p>
 
 <form method="post" action="{{ url_for('main.delete_name', name_id=name_entry.id) }}">
-    <button type="submit">Yes, delete</button>
-    <a href="{{ url_for('main.home') }}">Cancel</a>
+    <button type="submit" class="btn danger">Yes, delete</button>
+    <a href="{{ url_for('main.home') }}" class="btn primary">Cancel</a>
 </form>
 {% endblock %}

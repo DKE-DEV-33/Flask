@@ -6,8 +6,8 @@
   <h1>Home</h1>
   
   <form method="post" action="{{ url_for('main.home') }}">
-    <input type="text" name="name" placeholder="Your name">
-    <button type="submit">Submit</button>
+    <input type="text" name="name" placeholder="Enter a name into the database..">
+    <button type="submit" class="btn primary">Submit</button>
   </form>
 
 
@@ -16,9 +16,14 @@
       <ul>
       {% for n in names %}
           <li class="submitted_names">
-              {{ n.name }}
-              <a href="{{ url_for('main.edit_name', name_id=n.id) }}">Edit</a>
-              <a href="{{ url_for('main.delete_name', name_id=n.id) }}">Delete</a>
+              {{ n.name }} | 
+              
+              <a href="{{ url_for('main.edit_name', name_id=n.id) }}" class="btn small primary">Edit</a>
+              <a href="{{ url_for('main.delete_name', name_id=n.id) }}" class="btn small danger">Delete</a>
+              <br><br>
+              <small class="timestamp">
+                  Added {{ n.created_at.strftime('%b %d, %Y %I:%M %p') }}
+              </small>
           </li>
       {% endfor %}
       </ul>

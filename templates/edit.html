@@ -7,8 +7,8 @@
 <h1>Edit Name</h1>
 <form method="post">
     <input type="text" name="name" value="{{ name_entry.name }}">
-    <button type="submit">Save</button>
-    <a href="{{ url_for('main.home') }}">Cancel</a>
+    <button type="submit" class="btn primary">Save</button>
+    <a href="{{ url_for('main.home') }}" class="btn danger">Cancel</a>
 </form>
 
 {% endblock %}
