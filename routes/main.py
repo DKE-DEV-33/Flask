@@ -8,9 +8,10 @@ main = Blueprint('main', __name__)
 # Home route handling both GET and POST requests
 @main.route('/', methods=['GET', 'POST'])
 def home():
-    name = None
+    
     if request.method == 'POST':
         submitted_name = request.form.get('name', '').strip()
+
 
         # Basic validation
         if not submitted_name:
@@ -24,8 +25,23 @@ def home():
         flash('Name submitted successfully!', 'success')
         return redirect(url_for('main.home'))
 
-    all_names = Name.query.all()
-    return render_template('index.html', names=all_names)
+    # Pagination logic
+    page = request.args.get('page', 1, type=int)
+
+    pagination = Name.query.order_by(
+        Name.created_at.desc()
+    ).paginate(
+        page=page, 
+        per_page=5, 
+        error_out=False
+    )
+
+    # Render the template with names and pagination info
+    return render_template(
+        'index.html',
+        names=pagination.items,
+        pagination=pagination
+    )
 
 # About route
 @main.route('/about', methods=['GET'])

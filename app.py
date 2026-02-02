@@ -23,8 +23,9 @@ app.register_blueprint(main)
 
 if __name__ == '__main__':
     app.run(
-        debug=os.getenv('FLASK_ENV') == 'development',
-        port=5000
+        host='127.0.0.1',
+        port=5000,
+        debug=os.getenv('FLASK_ENV') == 'development'
     )
 
 

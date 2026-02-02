@@ -105,3 +105,16 @@ ul li a:hover {
 .timestamp:hover {
   color: #333;
 }
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.pagination a {
+  text-decoration: none;
+  color: #3498db;
+}
+.pagination a:hover {
+  text-decoration: underline;
+}

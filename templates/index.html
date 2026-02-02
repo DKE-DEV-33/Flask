@@ -5,15 +5,17 @@
 {% block content %}
   <h1>Home</h1>
   
+  <!-- Form -->
   <form method="post" action="{{ url_for('main.home') }}">
     <input type="text" name="name" placeholder="Enter a name into the database..">
     <button type="submit" class="btn primary">Submit</button>
   </form>
 
-
+  <!-- List -->
   {% if names %}
       <h2>Submitted Names:</h2>
-      <ul>
+
+      <ul class="name-list">
       {% for n in names %}
           <li class="submitted_names">
               {{ n.name }} | 
@@ -27,7 +29,19 @@
           </li>
       {% endfor %}
       </ul>
+      <div class="pagination">
+        {% if pagination.has_prev %}
+            <a href="{{ url_for('main.home', page=pagination.prev_num) }}">← Prev</a>
+        {% endif %}
 
+        <span>
+            Page {{ pagination.page }} of {{ pagination.pages }}
+        </span>
+
+        {% if pagination.has_next %}
+            <a href="{{ url_for('main.home', page=pagination.next_num) }}">Next →</a>
+        {% endif %}
+      </div>
   {% endif %}
 
 {% endblock %}
